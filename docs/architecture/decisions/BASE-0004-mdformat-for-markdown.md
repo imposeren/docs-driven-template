@@ -2,7 +2,7 @@
 title: "BASE-0004: mdformat for Markdown"
 summary: mdformat formats Markdown with line breaks preserved and compact tables; it runs as a prek hook and in CI.
 layer: architecture
-status: specified
+status: implemented
 milestone: foundation
 priority: must
 decision: accepted
