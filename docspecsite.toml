@@ -1,0 +1,3 @@
+# docspecsite settings. See docs/architecture/docs-tooling.md.
+adr-prefix = "BASE"
+source-url = "https://github.com/imposeren/docs-driven-template"
