@@ -35,6 +35,9 @@ _skip_if_exists:
   - docs/reference/web-api/index.md
   - docs/roadmap.md
   - docs/architecture/components.md
+  - docs/architecture/dev-environment.md
+  - docs/architecture/quality-gate.md
+  - docs/architecture/versioning.md
   - docs/architecture/decisions/index.md
   - docs/behavior/glossary.md
   - docs/architecture/glossary.md

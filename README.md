@@ -46,7 +46,7 @@ Taking the template's later changes is optional. Either:
 - run `uvx copier==9.19.1 update` in the project on a clean working tree: it applies the changes since the recorded version as a 3-way merge, with conflict markers where the project changed the same lines; or
 - let an agent compare the template versions and carry over what fits.
 
-Files the project owns once it exists are never overwritten: its `CLAUDE.md`, `README.md`, compose and prek config, the layer index pages, the roadmap, components, glossaries, decisions index and contributor guide.
+Files the project owns once it exists are never overwritten: its `CLAUDE.md`, `README.md`, compose and prek config, the layer index pages, the roadmap, components, glossaries, decisions index and contributor guide, and the architecture docs it extends with its own tools (dev environment, quality gate, versioning).
 They also never receive template changes: when an update adds a template doc, such as a new `BASE` ADR or the `PYRF-0001` of a newly chosen option, add its line to the index page yourself; `docspecsite check` names the missing entry.
 Other files, such as `.gitignore`, `docspecsite.toml` and `.claude/settings.json`, are merged, so the project's own changes stay.
 An ADR is never deleted: when the project drops an option, such as Pyrefly, supersede the option's ADR instead of letting the update remove it.
