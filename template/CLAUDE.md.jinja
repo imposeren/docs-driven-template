@@ -1,6 +1,7 @@
-# <project name> — Claude Code guide
+# {{ project_name }} — Claude Code guide
 
-<One or two sentences: what the project is and does.> Repo: <repo URL>.
+{{ project_description }}{% if repo_url %}
+Repo: {{ repo_url }}.{% endif %}
 
 **This project is documentation-driven: `docs/` is the spec. Code follows docs.**
 
@@ -17,7 +18,7 @@
 - Hosting and operations: `<where they are documented, if not in this repo>` (delete this line if they are in this repo).
 - Step-by-step procedures: `docs/guides/`. Screens and flows: `docs/ui/`. Milestones: `docs/roadmap.md` (docs carry `milestone` + `priority`).
 - How docs are written: `docs/meta/index.md`. Templates: `docs/meta/templates/`.
-- ADRs are numbered `<PREFIX>-NNNN`; this repo's prefix is `adr-prefix` in `docspecsite.toml`, and `BASE-*` ADRs come from the template (`docs/meta/structure.md#adr-ids`).
+- ADRs are numbered `<PREFIX>-NNNN`; this repo's prefix is `adr-prefix` in `docspecsite.toml`, and `BASE-*` ADRs come from the template, listed in `external-adr-prefixes` (`docs/meta/structure.md#adr-ids`).
 
 ## Hard rules
 

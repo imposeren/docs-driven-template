@@ -1,0 +1,63 @@
+# Copier template settings and questions. See README.md and BASE-0006.
+# Keep equal to COPIER_VERSION in scripts/check-sample-project.sh and to the version in README.md.
+_min_copier_version: "9.19.1"
+_subdirectory: template
+_templates_suffix: .jinja
+# Files a project owns once it exists: created from the template, never overwritten by a later copy or update,
+# so they also never receive template changes (see README.md, "Update a project").
+# The method's own docs (docs/meta, docs/agents) are not listed: they take template updates.
+_skip_if_exists:
+  - CLAUDE.md
+  - README.md
+  - .gitignore
+  - docspecsite.toml
+  - compose.yaml
+  - .pre-commit-config.yaml
+  - docs/index.md
+  - docs/behavior/index.md
+  - docs/scenarios/index.md
+  - docs/architecture/index.md
+  - docs/ui/index.md
+  - docs/guides/index.md
+  - docs/reference/index.md
+  - docs/reference/code/index.md
+  - docs/reference/external/index.md
+  - docs/reference/web-api/index.md
+  - docs/roadmap.md
+  - docs/architecture/components.md
+  - docs/architecture/decisions/index.md
+  - docs/behavior/glossary.md
+  - docs/architecture/glossary.md
+  - docs/guides/contributor-setup.md
+
+project_name:
+  type: str
+  help: Project name
+  validator: "{% if not project_name.strip() %}Enter a name.{% endif %}"
+
+project_description:
+  type: str
+  help: One or two sentences on what the project is and does, ending with a period
+  validator: "{% if not project_description.strip() %}Enter a description.{% endif %}"
+
+repo_url:
+  type: str
+  help: Web URL of the project's repository, such as https://github.com/example/project (optional)
+  default: ""
+  validator: >-
+    {% if not repo_url %}{% elif not repo_url.startswith('https://') or ' ' in repo_url or '"' in repo_url %}Enter an https:// URL without spaces or quotes.{% elif repo_url.endswith('/') or repo_url.endswith('.git') %}Leave out the trailing "/" or ".git".{% endif %}
+
+docspecsite_version:
+  type: str
+  help: docspecsite release (git tag) the project pins for its docs check and site build; the default is the one this template release was tested with
+  # The release this template version needs and is checked with (scripts/check-sample-project.sh uses the default).
+  default: v0.1.0
+  validator: "{% if not docspecsite_version.strip() or ' ' in docspecsite_version %}Enter a tag such as v0.1.0, without spaces.{% endif %}"
+
+adr_prefix:
+  type: str
+  help: >-
+    Prefix of the project's own ADRs (architecture decision records: short docs recording one technical
+    decision each, named <PREFIX>-NNNN). Capital letters only, such as APP; BASE is the template's own.
+  validator: >-
+    {% if not (adr_prefix.isascii() and adr_prefix.isalpha() and adr_prefix == adr_prefix.upper()) %}Use capital letters only, such as APP.{% elif adr_prefix == 'BASE' %}BASE is the template's prefix; choose another.{% endif %}

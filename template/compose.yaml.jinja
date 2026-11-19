@@ -3,8 +3,8 @@ services:
   docs:
     build:
       # Keep the tag equal to the docspecsite rev in .pre-commit-config.yaml.
-      context: https://github.com/imposeren/docspecsite.git#v0.1.0
-    image: docspecsite:v0.1.0
+      context: https://github.com/imposeren/docspecsite.git#{{ docspecsite_version }}
+    image: docspecsite:{{ docspecsite_version }}
     profiles: [docs]
     user: "${UID:-1000}:${GID:-1000}"
     volumes:

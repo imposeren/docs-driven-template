@@ -1,5 +1,5 @@
 ---
-title: <project name> documentation
+title: {{ (project_name ~ ' documentation') | tojson }}
 summary: Entry point to all documentation layers — what each layer is for and where to start reading.
 layer: root
 status: implemented
@@ -10,9 +10,9 @@ related:
   - agents/index.md
 ---
 
-# `<project name>` documentation
+# {{ project_name }} documentation
 
-`<One or two sentences: what the project is and who it is for.>`
+{{ project_description }}
 
 These docs are the **finished specification** of the system — they describe what the system is and does, not a history of changes.
 Where docs and code disagree, the docs say what the code should become (see [lifecycle](meta/lifecycle.md)).

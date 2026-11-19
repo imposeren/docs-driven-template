@@ -29,6 +29,6 @@ repos:
         exclude: ^\.pre-commit-config\.yaml$
 
   - repo: https://github.com/imposeren/docspecsite
-    rev: v0.1.0 # keep equal to the tag in compose.yaml
+    rev: {{ docspecsite_version }} # keep equal to the tag in compose.yaml
     hooks:
       - id: docs-check

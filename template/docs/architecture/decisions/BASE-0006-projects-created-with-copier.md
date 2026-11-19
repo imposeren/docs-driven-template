@@ -2,7 +2,7 @@
 title: "BASE-0006: Projects are created from the template with Copier"
 summary: A project is created from the template with Copier, which asks for the project's settings and options, records the template version it used, and can apply later template changes; projects are no longer git forks of the template.
 layer: architecture
-status: specified
+status: implemented
 milestone: foundation
 priority: must
 decision: accepted
@@ -41,7 +41,7 @@ Updates from the template are useful but optional: a project may take the templa
 - The template's project files live in its `template/` directory; only files ending in `.jinja` are rendered, so the docs stay plain Markdown.
 - The project's answers file (`.copier-answers.yml`) records the template version it was created or last updated from.
 - **Updates are optional**: `copier update` when it helps, or an agent comparing template versions; either way the project reviews the result before committing it.
-- Files a project owns after it is created (its CLAUDE.md, README, index pages, components, glossaries, roadmap, decisions index, compose and prek config) are written only when they don't exist yet, so an update never overwrites the project's content.
+- Files a project owns after it is created (its CLAUDE.md, README, `.gitignore`, `docspecsite.toml`, compose and prek config, layer index pages, components, glossaries, roadmap, decisions index and contributor guide) are written only when they don't exist yet, so an update never overwrites the project's content; they also don't receive template changes, which the project adds by hand.
 
 ## Consequences
 
