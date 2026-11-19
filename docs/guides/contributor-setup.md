@@ -2,7 +2,7 @@
 title: Set up your machine to contribute
 summary: One-time setup for contributing to the project — host tools, commit hooks (prek), and daily use.
 layer: guides
-status: specified
+status: implemented
 milestone: foundation
 priority: should
 components: [quality-gate, dev-environment, agents]

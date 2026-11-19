@@ -2,7 +2,7 @@
 title: Development environment
 summary: docker compose is the single entry point for running anything in the project; the host needs only Docker, git and prek.
 layer: architecture
-status: specified
+status: implemented
 milestone: foundation
 priority: must
 components: [dev-environment]

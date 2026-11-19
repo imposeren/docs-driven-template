@@ -2,7 +2,7 @@
 title: Docs tooling
 summary: Docs are checked and rendered by docspecsite at a pinned version — a prek hook on commit, docker compose services for listing, building and serving the site, and settings in docspecsite.toml.
 layer: architecture
-status: specified
+status: implemented
 components: [docs-system]
 tags: [docs, tooling, rendering]
 related:

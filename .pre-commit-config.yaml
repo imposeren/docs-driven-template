@@ -1,5 +1,6 @@
 # Commit hooks, run by prek. See docs/architecture/quality-gate.md.
-# mdformat runs in an environment prek creates.
+# mdformat and docs-check run in environments prek creates; docs-check comes
+# from docspecsite's repo, pinned to the same tag as compose.yaml.
 repos:
   - repo: builtin
     hooks:
@@ -26,3 +27,8 @@ repos:
         entry: '(?<!:-)(~|\$HOME)/\.claude(/|\b)'
         types: [text]
         exclude: ^\.pre-commit-config\.yaml$
+
+  - repo: https://github.com/imposeren/docspecsite
+    rev: v0.1.0 # keep equal to the tag in compose.yaml
+    hooks:
+      - id: docs-check

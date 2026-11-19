@@ -2,7 +2,7 @@
 title: "BASE-0001: Docs are checked and rendered by docspecsite"
 summary: The docs are checked, listed and rendered with per-doc git history by docspecsite, a separate tool pinned to a git tag and used through a prek hook and docker compose services, so projects share one implementation of the method's rules.
 layer: architecture
-status: specified
+status: implemented
 milestone: foundation
 priority: must
 decision: accepted

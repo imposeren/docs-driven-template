@@ -2,7 +2,7 @@
 title: "BASE-0003: docker compose as the single entry point"
 summary: Every project task (docs, dev stack, tests, CI steps) is defined as a docker compose service, so the host needs only Docker and git.
 layer: architecture
-status: specified
+status: implemented
 milestone: foundation
 priority: must
 decision: accepted
