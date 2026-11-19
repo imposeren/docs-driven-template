@@ -2,7 +2,7 @@
 title: Looking up code
 summary: How agents find definitions, references, signatures, file outlines and type errors — through the language server the project enables as a Claude Code plugin, with a default per language.
 layer: agents
-status: implemented
+status: specified
 components: [agents]
 tags: [agents, navigation, context, lsp]
 related:
@@ -17,13 +17,17 @@ Claude Code talks to the server through a plugin and gives the agent an `LSP` to
 
 ## Which server
 
-The project enables its language-server plugin in `.claude/settings.json`, so everyone working in the repo gets the same one.
-The project's `docs/architecture/agent-tooling.md`, when it has one, names the server and why it was chosen; that choice wins over the defaults below.
+A project chooses its languages when it is created from the template, and gets one language-server plugin for each, enabled in `.claude/settings.json`, so everyone working in the repo gets the same ones.
 How to add a plugin marketplace and enable a plugin: [Claude Code's plugin docs](https://code.claude.com/docs/en/discover-plugins).
 
-Without a project choice, the default is the official `<language>-lsp` plugin from Anthropic's `claude-plugins-official` marketplace, for example `pyright-lsp`, `typescript-lsp`, `gopls-lsp` or `rust-analyzer-lsp`.
-Python is the exception: its default is `pyrefly-lsp` from [imposeren/pyrefly-lsp](https://github.com/imposeren/pyrefly-lsp) (a Claude Code plugin marketplace), so the type errors seen while editing match the Pyrefly type checker.
+| Language | Server |
+| -- | -- |
+| Python | Anthropic's `pyright-lsp`, or `pyrefly-lsp@claude-pyrefly-lsp` for projects that type-check with Pyrefly ([PYRF-0001](../architecture/decisions/PYRF-0001-pyrefly-language-server.md)) |
+| TypeScript and JavaScript | Anthropic's `typescript-lsp` |
+| HTML and CSS | none: agents use grep |
+| other languages the project names | none: agents use grep |
 
+For a language not listed, use the official `<language>-lsp` plugin for it from Anthropic's `claude-plugins-official` marketplace, if there is one, such as `gopls-lsp` or `rust-analyzer-lsp`.
 The plugin only tells Claude Code how to start the server; the server itself must be installed where the plugin's README says.
 
 ## Which tool

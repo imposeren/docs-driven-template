@@ -94,7 +94,9 @@ Step 3 follows from the no-delete/no-rename rule ([versioning.md](versioning.md#
 Every ADR has an ID `<PREFIX>-NNNN`, e.g. `BASE-0002`, used in its file name (`architecture/decisions/BASE-0002-<slug>.md`), its title and every citation.
 
 - **Prefix:** each repo has its own, set by `adr-prefix` in `docspecsite.toml` at the repo root.
-  `BASE` is the prefix of the template the repo was started from: a project holds its own prefix plus `BASE`, and the template holds only `BASE`.
+  A repo can also hold **external ADRs**: ADRs that come from elsewhere and keep the ID they have there; `external-adr-prefixes` in `docspecsite.toml` lists their prefixes.
+  `BASE` is the prefix of the template's own ADRs, which every project created from the template holds.
+  A template option can bring ADRs under a prefix of its own, such as `PYRF` for the Pyrefly language server; only projects that chose the option hold them.
 - **Number:** each prefix has its own gap-free sequence, starting at `0001`.
   A number is never reused, not even after its ADR is superseded.
   A repo has one sequence for all its ADRs, whatever layer or part of the system they are about.
