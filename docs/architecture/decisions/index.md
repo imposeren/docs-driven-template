@@ -27,3 +27,4 @@ Each line gives the ADR's `decision` and `status`, then its title ([meta/lifecyc
 - [BASE-0003](BASE-0003-docker-compose-as-entry-point.md) — accepted, implemented — docker compose as the single entry point
 - [BASE-0004](BASE-0004-mdformat-for-markdown.md) — accepted, implemented — mdformat for Markdown
 - [BASE-0005](BASE-0005-semver-from-git-tags.md) — accepted, specified — Semantic versions tied to public-interface compatibility, defined only by git tags
+- [BASE-0006](BASE-0006-projects-created-with-copier.md) — accepted, specified — Projects are created from the template with Copier
