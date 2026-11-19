@@ -2,7 +2,7 @@
 title: Looking up code
 summary: How agents find definitions, references, signatures, file outlines and type errors — through the language server the project enables as a Claude Code plugin, with a default per language.
 layer: agents
-status: specified
+status: implemented
 components: [agents]
 tags: [agents, navigation, context, lsp]
 related:
@@ -17,17 +17,34 @@ Claude Code talks to the server through a plugin and gives the agent an `LSP` to
 
 ## Which server
 
-A project chooses its languages when it is created from the template, and gets one language-server plugin for each, enabled in `.claude/settings.json`, so everyone working in the repo gets the same ones.
+{% set other_language_names = other_languages.split(',') | map('trim') | select | list -%}
+{% if languages or other_language_names -%}
+This project's languages and their language servers, chosen when it was created from the template{% if has_language_servers %}; the plugins are enabled in `.claude/settings.json`, so everyone working in the repo gets the same ones{% endif %}.
 How to add a plugin marketplace and enable a plugin: [Claude Code's plugin docs](https://code.claude.com/docs/en/discover-plugins).
 
 | Language | Server |
 | -- | -- |
-| Python | Anthropic's `pyright-lsp`, or `pyrefly-lsp@claude-pyrefly-lsp` for projects that type-check with Pyrefly ([PYRF-0001](../architecture/decisions/PYRF-0001-pyrefly-language-server.md)) |
+{% if 'python' in languages -%}
+{% if uses_pyrefly -%}
+| Python | `pyrefly-lsp@claude-pyrefly-lsp` ([PYRF-0001](../architecture/decisions/PYRF-0001-pyrefly-language-server.md)) |
+{% else -%}
+| Python | Anthropic's `pyright-lsp` |
+{% endif -%}
+{% endif -%}
+{% if 'typescript-javascript' in languages -%}
 | TypeScript and JavaScript | Anthropic's `typescript-lsp` |
+{% endif -%}
+{% if 'html-css' in languages -%}
 | HTML and CSS | none: agents use grep |
-| other languages the project names | none: agents use grep |
+{% endif -%}
+{% for language in other_language_names -%}
+| {{ language }} | none: agents use grep |
+{% endfor %}
+{% else -%}
+The project has no language-specific code yet, so no language server is set up.
 
-For a language not listed, use the official `<language>-lsp` plugin for it from Anthropic's `claude-plugins-official` marketplace, if there is one, such as `gopls-lsp` or `rust-analyzer-lsp`.
+{% endif -%}
+For a language added later, use the official `<language>-lsp` plugin for it from Anthropic's `claude-plugins-official` marketplace, if there is one, such as `pyright-lsp`, `typescript-lsp`, `gopls-lsp` or `rust-analyzer-lsp`{% if has_language_servers %}, and enable it in `.claude/settings.json`{% endif %}.
 The plugin only tells Claude Code how to start the server; the server itself must be installed where the plugin's README says.
 
 ## Which tool

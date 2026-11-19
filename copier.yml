@@ -3,14 +3,24 @@
 _min_copier_version: "9.19.1"
 _subdirectory: template
 _templates_suffix: .jinja
+# Copier's default exclusions, then the optional files, left out unless their option is chosen.
+_exclude:
+  - copier.yaml
+  - copier.yml
+  - "~*"
+  - "*.py[co]"
+  - __pycache__
+  - .git
+  - .DS_Store
+  - .svn
+  - "{% if not uses_pyrefly %}/docs/architecture/decisions/PYRF-0001-pyrefly-language-server.md{% endif %}"
+  - "{% if not has_language_servers %}/.claude/settings.json{% endif %}"
 # Files a project owns once it exists: created from the template, never overwritten by a later copy or update,
 # so they also never receive template changes (see README.md, "Update a project").
 # The method's own docs (docs/meta, docs/agents) are not listed: they take template updates.
 _skip_if_exists:
   - CLAUDE.md
   - README.md
-  - .gitignore
-  - docspecsite.toml
   - compose.yaml
   - .pre-commit-config.yaml
   - docs/index.md
@@ -47,6 +57,56 @@ repo_url:
   validator: >-
     {% if not repo_url %}{% elif not repo_url.startswith('https://') or ' ' in repo_url or '"' in repo_url %}Enter an https:// URL without spaces or quotes.{% elif repo_url.endswith('/') or repo_url.endswith('.git') %}Leave out the trailing "/" or ".git".{% endif %}
 
+languages:
+  type: str
+  help: Languages the project's code is in (none is fine); Python and TypeScript/JavaScript get a language server for agents
+  multiselect: true
+  choices:
+    Python: python
+    TypeScript and JavaScript: typescript-javascript
+    HTML and CSS: html-css
+  default: "[]"
+
+other_languages:
+  type: str
+  help: Other languages, comma-separated, such as "SQL, Bash" (only named in the docs; agents use grep for them)
+  default: ""
+  validator: >-
+    {% set names = other_languages.lower().replace(' ', '').split(',') %}{% if '|' in other_languages %}Leave out "|".{% elif names | select('in', ['python', 'typescript', 'javascript', 'html', 'css']) | list %}Choose Python, TypeScript, JavaScript, HTML or CSS in the languages question instead.{% endif %}
+
+python_language_server:
+  type: str
+  help: Language server agents use for Python
+  when: "{{ 'python' in languages }}"
+  choices:
+    Anthropic's pyright-lsp (Pyright): official
+    pyrefly-lsp, for projects that type-check with Pyrefly (PYRF-0001): pyrefly
+  default: official
+
+# Computed, not asked: whether any chosen language has a language-server plugin.
+has_language_servers:
+  type: bool
+  when: false
+  default: "{{ 'python' in languages or 'typescript-javascript' in languages }}"
+
+# Computed, not asked: whether the project uses the Pyrefly option (PYRF-0001).
+uses_pyrefly:
+  type: bool
+  when: false
+  default: "{{ 'python' in languages and python_language_server == 'pyrefly' }}"
+
+# Computed, not asked: the prefixes of all the template's ADRs; an option's prefix comes with that option.
+template_adr_prefixes:
+  type: yaml
+  when: false
+  default: "[BASE, PYRF]"
+
+# Computed, not asked: the template ADR prefixes this project holds (BASE, plus those of its chosen options).
+external_adr_prefixes:
+  type: yaml
+  when: false
+  default: "{{ ['BASE'] + (['PYRF'] if uses_pyrefly else []) }}"
+
 docspecsite_version:
   type: str
   help: docspecsite release (git tag) the project pins for its docs check and site build; the default is the one this template release was tested with
@@ -60,4 +120,4 @@ adr_prefix:
     Prefix of the project's own ADRs (architecture decision records: short docs recording one technical
     decision each, named <PREFIX>-NNNN). Capital letters only, such as APP; BASE is the template's own.
   validator: >-
-    {% if not (adr_prefix.isascii() and adr_prefix.isalpha() and adr_prefix == adr_prefix.upper()) %}Use capital letters only, such as APP.{% elif adr_prefix == 'BASE' %}BASE is the template's prefix; choose another.{% endif %}
+    {% if not (adr_prefix.isascii() and adr_prefix.isalpha() and adr_prefix == adr_prefix.upper()) %}Use capital letters only, such as APP.{% elif adr_prefix in template_adr_prefixes %}{{ adr_prefix }} is a prefix of the template's ADRs; choose another.{% endif %}

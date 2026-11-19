@@ -41,7 +41,7 @@ Updates from the template are useful but optional: a project may take the templa
 - The template's project files live in its `template/` directory; only files ending in `.jinja` are rendered, so the docs stay plain Markdown.
 - The project's answers file (`.copier-answers.yml`) records the template version it was created or last updated from.
 - **Updates are optional**: `copier update` when it helps, or an agent comparing template versions; either way the project reviews the result before committing it.
-- Files a project owns after it is created (its CLAUDE.md, README, `.gitignore`, `docspecsite.toml`, compose and prek config, layer index pages, components, glossaries, roadmap, decisions index and contributor guide) are written only when they don't exist yet, so an update never overwrites the project's content; they also don't receive template changes, which the project adds by hand.
+- Files a project owns after it is created (its CLAUDE.md, README, compose and prek config, layer index pages, components, glossaries, roadmap, decisions index and contributor guide) are written only when they don't exist yet, so an update never overwrites the project's content; they also don't receive template changes, which the project adds by hand.
 
 ## Consequences
 

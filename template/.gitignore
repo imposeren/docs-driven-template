@@ -24,3 +24,6 @@
 
 # Personal Claude Code notes
 CLAUDE.local.md
+
+# Local direnv setup, such as the project's tools first on the PATH
+/.envrc

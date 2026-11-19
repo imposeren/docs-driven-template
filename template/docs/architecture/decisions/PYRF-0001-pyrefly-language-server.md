@@ -2,7 +2,7 @@
 title: "PYRF-0001: Pyrefly language server for agents"
 summary: In Python projects that type-check with Pyrefly, agents look up code through Pyrefly's own language server, run by the pyrefly-lsp Claude Code plugin with Pyrefly at the project's pinned version on the PATH, so the type errors agents see while editing match the project's type check.
 layer: architecture
-status: specified
+status: implemented
 milestone: foundation
 priority: should
 decision: accepted

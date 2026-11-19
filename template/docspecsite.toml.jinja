@@ -1,6 +1,6 @@
 # docspecsite settings. See docs/architecture/docs-tooling.md.
 adr-prefix = {{ adr_prefix | tojson }}
 # ADRs that come from the template keep their IDs.
-external-adr-prefixes = ["BASE", "PYRF"]
+external-adr-prefixes = {{ external_adr_prefixes | tojson }}
 {% if repo_url %}source-url = {{ repo_url | tojson }}
 {% endif %}

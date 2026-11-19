@@ -1,0 +1,13 @@
+{#- Claude Code settings: one language-server plugin per language (docs/agents/code-lookup.md). -#}
+{%- set plugins = {} -%}
+{%- if 'python' in languages -%}
+{%- set _ = plugins.update({'pyrefly-lsp@claude-pyrefly-lsp' if uses_pyrefly else 'pyright-lsp@claude-plugins-official': true}) -%}
+{%- endif -%}
+{%- if 'typescript-javascript' in languages -%}
+{%- set _ = plugins.update({'typescript-lsp@claude-plugins-official': true}) -%}
+{%- endif -%}
+{%- set settings = {'enabledPlugins': plugins} -%}
+{%- if uses_pyrefly -%}
+{%- set _ = settings.update({'extraKnownMarketplaces': {'claude-pyrefly-lsp': {'source': {'source': 'github', 'repo': 'imposeren/claude-pyrefly-lsp'}}}}) -%}
+{%- endif -%}
+{{ settings | tojson(indent=2) }}
