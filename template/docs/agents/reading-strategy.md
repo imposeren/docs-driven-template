@@ -2,7 +2,7 @@
 title: Reading strategy for agents
 summary: How an agent should find relevant docs and read only as deep as the task needs — summaries first, mirrored paths, related links, and the list command.
 layer: agents
-status: implemented
+status: specified
 components: [agents]
 tags: [agents, navigation, context]
 related:
@@ -46,7 +46,7 @@ The rendered HTML site is for humans ([docspecsite](https://github.com/imposeren
 | Task | Read |
 | -- | -- |
 | Implement a feature | behavior doc → scenarios doc (acceptance criteria) → ui doc (if it has a UI) → architecture doc → its ADRs ([architecture decision records](../meta/glossary.md#adr)) |
-| Fix a bug | the `implemented` scenarios/behavior doc it contradicts → architecture doc |
+| Fix a bug | the `implemented` scenarios/behavior doc (or built section) it contradicts → architecture doc |
 | Write a new spec | [meta/authoring.md](../meta/authoring.md) → template → parent `index.md` → siblings' summaries |
 | Infra / tooling change | architecture doc for the area → its ADRs → the guides for that area |
 | Integrate an external platform | its `reference/external/` doc → the architecture doc of the integration |
@@ -55,4 +55,4 @@ The rendered HTML site is for humans ([docspecsite](https://github.com/imposeren
 
 - Don't load whole layers "for context".
 - Don't treat an **old version** page or a `draft`/`deprecated`/`redirect` doc as current spec.
-- Don't infer requirements from code alone; code may lag behind a `specified` doc.
+- Don't infer requirements from code alone; code may lag behind a `specified` or `changed` doc or section.

@@ -2,7 +2,7 @@
 title: Working from specs
 summary: How agents (and people) design new work with the user, turn specified docs into code, write or change specs, and record technical decisions as ADRs.
 layer: agents
-status: implemented
+status: specified
 components: [agents]
 tags: [agents, workflow, adr, project-management]
 related:
@@ -28,6 +28,7 @@ related:
    If the project validates the references in its code (`Docs:` lines, and references to other code in docstrings), run the code check once the implementation is done (`docker compose run --rm docs check --optional-checks code`).
 
 4. Set the doc's `status: implemented` (and its parents' if all their children are done).
+   When only some sections are built, the doc's `status` lists the statuses that are left and the sections not built yet keep their [status notes](../meta/lifecycle.md#status-notes); a built section loses its status note.
 
 5. Write or update the [guides](../guides/index.md) for any new procedure it introduces (setup, migration, release step): whoever builds a thing writes its guide.
 
@@ -39,7 +40,7 @@ related:
 
 ## Changing what the system does
 
-Edit the docs to describe the **new target state** in every layer concerned (behavior → scenarios → ui → architecture), set them to `specified`, and commit them together with a subject like `spec: <what changed>`.
+Edit the docs to describe the **new target state** in every layer concerned (behavior → scenarios → ui → architecture), set them to `changed` (for what the code already implements in an older form) or `specified` (for what is new), or mark only the sections that change ([meta/lifecycle.md](../meta/lifecycle.md#partly-built-docs)), and commit them together with a subject like `spec: <what changed>`.
 That commit is the change request; implementing it follows the steps above.
 
 ## Designing before specifying

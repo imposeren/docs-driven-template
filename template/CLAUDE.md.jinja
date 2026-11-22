@@ -27,7 +27,7 @@ Repo: {{ repo_url }}.{% endif %}
    Replace them with a redirect doc (`status: redirect`, `redirect_kind:`, `redirect_to:`, `reason:`).
 3. Write docs as the target state in present tense.
    No TODOs, change requests or bug reports in docs.
-4. Keep `status` honest: `specified` = to do, `implemented` = true in the code.
+4. Keep `status` honest: `specified` = to do, `changed` = to do over an older form, `implemented` = true in the code; a partly built doc lists several and marks its sections (`docs/meta/lifecycle.md#partly-built-docs`).
 5. A technical choice not covered by an ADR (architecture decision record, in `docs/architecture/decisions/`) → write a `decision: proposed` ADR and ask.
 6. Every doc has front matter (`title, summary, layer, status, components, tags, related`); components come from `docs/architecture/components.md`.
 7. Body links are relative to the file; front-matter paths are relative to `docs/`.
