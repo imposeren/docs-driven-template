@@ -49,6 +49,10 @@ Architecture docs cite these numbers to say which requirement a design element s
 
 How detailed a doc is, given by its position in its layer's directory tree; `index.md` at a layer's root is depth 0. See [structure.md](structure.md#depth).
 
+### Document brief
+
+The paragraph right after a doc's title: the whole doc in 2–5 sentences, so a reader who stops there has a correct picture. Not the front-matter `summary`, which is one sentence for listings. See [authoring.md](authoring.md#page-shape).
+
 ### Front matter
 
 The YAML block at the top of each doc holding its metadata. See [front-matter.md](front-matter.md).

@@ -23,7 +23,7 @@ Read **breadth-first, summaries first**, and go deeper only when the current doc
    Otherwise open the relevant layer's `index.md`, or use the docs tooling's `list` query (see [architecture/docs-tooling.md](../architecture/docs-tooling.md)).
    Without tooling, grep front matter: `grep -rl "components: \[.*<c>" docs/`.
 2. **Read the summary.**
-   Front-matter `summary` plus the first paragraph. Often enough.
+   Front-matter `summary` plus the document brief (the first paragraph). Often enough.
 3. **Go across before going deep.**
    The same part lives at the same path in other layers ([mirrored paths](../meta/structure.md#mirrored-paths)): behavior says *what*, scenarios say *exactly what*, ui says *what it looks like*, architecture says *how*, guides say *how to operate it*. Follow `related:` links.
 4. **Go deep only for specifics** — exact rules, formats, edge cases.
