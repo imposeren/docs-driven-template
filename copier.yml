@@ -114,8 +114,8 @@ docspecsite_version:
   type: str
   help: docspecsite release (git tag) the project pins for its docs check and site build; the default is the one this template release was tested with
   # The release this template version needs and is checked with (scripts/check-sample-project.sh uses the default).
-  default: v0.1.0
-  validator: "{% if not docspecsite_version.strip() or ' ' in docspecsite_version %}Enter a tag such as v0.1.0, without spaces.{% endif %}"
+  default: v0.2.0
+  validator: "{% if not docspecsite_version.strip() or ' ' in docspecsite_version %}Enter a tag such as v0.2.0, without spaces.{% endif %}"
 
 adr_prefix:
   type: str
