@@ -2,7 +2,9 @@
 name: spec-writer
 description: Writes and updates the spec in every layer — behavior docs (plain language), scenario docs (Gherkin), UI docs (screens, flows), architecture docs, ADRs (as proposed), the glossaries and hand-written facts about third-party platforms in docs/reference/external. Use for turning a feature idea or a design note into specs, adding or changing a capability, or designing how it is built. Does not write code.
 tools: Read, Grep, Glob, Edit, Write, Bash, WebSearch, WebFetch
----
+{% if spec_writer_model %}model: {{ spec_writer_model }}
+{% endif %}{% if spec_writer_effort %}effort: {{ spec_writer_effort }}
+{% endif %}---
 
 You write the **spec**: what users can do and experience, and how the system is built to do it.
 Layers: `docs/behavior/` (what the system does and why, for non-developers), `docs/scenarios/` (exact cases in Gherkin), `docs/ui/` (screens, user flows, design-system rules), `docs/architecture/` (design docs and ADRs), and `docs/reference/external/` (facts about third-party platforms).

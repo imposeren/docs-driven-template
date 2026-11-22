@@ -124,3 +124,16 @@ adr_prefix:
     decision each, named <PREFIX>-NNNN). Capital letters only, such as APP; BASE is the template's own.
   validator: >-
     {% if not (adr_prefix.isascii() and adr_prefix.isalpha() and adr_prefix == adr_prefix.upper()) %}Use capital letters only, such as APP.{% elif adr_prefix in template_adr_prefixes %}{{ adr_prefix }} is a prefix of the template's ADRs; choose another.{% endif %}
+
+spec_writer_model:
+  type: str
+  help: >-
+    Model for the spec-writer agent, which writes the specs (e.g. opus); empty = the session's model.
+    Specs decide more than any later step, so a capable model pays off here.
+  default: ""
+
+spec_writer_effort:
+  type: str
+  help: Reasoning effort for the spec-writer agent (low, medium, high); empty = the default effort.
+  default: ""
+  validator: "{% if spec_writer_effort and spec_writer_effort not in ['low', 'medium', 'high'] %}Use low, medium or high, or leave it empty.{% endif %}"
