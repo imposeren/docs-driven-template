@@ -46,7 +46,7 @@ Its `status` is then a list of distinct values from `implemented`, `specified` a
 For status, each heading below the `#` title, at any level, starts a section of its own: the heading and its text up to the next heading of any level, so a `##` section does not include the `###` sections below it.
 The `#` title and the text under it have no status of their own.
 The first value is the status of every section without a status note; each further value is the status note of at least one section.
-`draft`, `deprecated` and `redirect` are single values only.
+`draft`, `deprecated` and `redirect` are never combined with other statuses; each may still be written as a one-value list, such as `status: [draft]`.
 
 ### Section notes
 
@@ -57,7 +57,7 @@ A note line with a label that is not a known kind is ordinary text, so new kinds
 
 ### Status notes
 
-A status note is a section note that starts with one of these exact texts.
+A status note is a section note that starts with one of these exact texts; they are the docs tooling's defaults, and a project may set its own, for example to write its docs in another language.
 
 | Status note | The section is |
 | -- | -- |
@@ -99,7 +99,7 @@ The docs check enforces the status notes:
 - no status note gives the first value, which already covers every section without one;
 - a doc with a single status has no status notes.
 
-When a section with a status note is built, its status note is removed, and a value whose last status note is gone leaves the list; a list with one value left becomes that single value.
+When a section with a status note is built, its status note is removed, and a value whose last status note is gone leaves the list; a list with one value left may stay a list, and means the same as that single value.
 The first value may change as the work goes on, such as from `[specified, implemented]` to `[implemented, specified]` once most sections are built: the doc's status notes are then redone, so every section whose state differs from the new first value gets its status note, and the status notes of the new first value are removed.
 `check` reports a status note left with the new first value, but it cannot tell a section without one that should now carry one, so redoing the status notes goes section by section.
 
