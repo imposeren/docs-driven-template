@@ -51,7 +51,7 @@ How detailed a doc is, given by its position in its layer's directory tree; `ind
 
 ### Document brief
 
-The paragraph right after a doc's title: the whole doc in 2–5 sentences, so a reader who stops there has a correct picture. Not the front-matter `summary`, which is one sentence for listings. See [authoring.md](authoring.md#page-shape).
+The paragraph right after a doc's title, its level-1 heading: the whole doc in 2–5 sentences, so a reader who stops there has a correct picture. Not the front-matter `summary`, which is one sentence for listings. See [authoring.md](authoring.md#page-shape).
 
 ### Front matter
 
@@ -106,7 +106,7 @@ Where a doc is in its lifecycle: `draft`, `specified` (agreed, not built — i.e
 
 ### Status note
 
-The kind of [section note](#section-note), such as `> **Not built yet.**`, that gives its section, a heading and its text up to the next heading of any level, a status other than the doc's first `status` value, in a partly built doc. It does not cover the sections under deeper headings below it. A section has at most one, and the `#` title has none. See [lifecycle.md](lifecycle.md#status-notes).
+The kind of [section note](#section-note), such as `> **Not built yet.**`, that gives its section, a heading and its text up to the next heading of any level, a status other than the doc's first `status` value, in a partly built doc. It does not cover the sections under deeper headings below it. A section has at most one; the doc's title and its [document brief](#document-brief) carry none, as the doc's whole `status` describes them. See [lifecycle.md](lifecycle.md#status-notes).
 
 ### Version (of a doc)
 

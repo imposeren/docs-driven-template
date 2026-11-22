@@ -43,8 +43,9 @@ A parent doc's status summarizes its children: if any child is `specified` or `c
 
 A doc can be partly built: some of its sections are true in the code, others are not yet.
 Its `status` is then a list of distinct values from `implemented`, `specified` and `changed`, such as `status: [implemented, specified]`.
-For status, each heading below the `#` title, at any level, starts a section of its own: the heading and its text up to the next heading of any level, so a `##` section does not include the `###` sections below it.
-The `#` title and the text under it have no status of their own.
+The doc's title is its level-1 heading, right after the front matter ([authoring.md](authoring.md#page-shape)).
+The title and the [document brief](authoring.md#page-shape) under it carry no status note: the doc's whole `status` describes them, so the brief may mention built and unbuilt parts alike.
+Every other heading, at any level, starts a section of its own: the heading and its text up to the next heading of any level, so a `##` section does not include the `###` sections below it.
 The first value is the status of every section without a status note; each further value is the status note of at least one section.
 `draft`, `deprecated` and `redirect` are never combined with other statuses; each may still be written as a one-value list, such as `status: [draft]`.
 
@@ -69,7 +70,7 @@ Text may follow on the same line, such as what still works the old way: `> **Cha
 A status note is plain text: it reads as an ordinary note on GitHub, in editors and on the rendered site.
 A section has at most one status note.
 A status note gives the status of its own section only: the sections under deeper headings below it have the first value unless they have a status note of their own.
-A status note right under the `#` title belongs to no section; the doc's status is set in its `status` instead.
+A status note right under the title belongs to no section; the doc's status is set in its `status` instead.
 
 ```markdown
 ---
@@ -94,9 +95,9 @@ The docs check enforces the status notes:
 - no value appears twice in the list;
 - every value after the first is the status note of at least one section;
 - no section has more than one status note;
-- no status note sits right under the `#` title;
+- no status note sits right under the title;
 - every status note's status is in the list;
-- no status note gives the first value, which already covers every section without one;
+- no status note gives the first value;
 - a doc with a single status has no status notes.
 
 When a section with a status note is built, its status note is removed, and a value whose last status note is gone leaves the list; a list with one value left may stay a list, and means the same as that single value.

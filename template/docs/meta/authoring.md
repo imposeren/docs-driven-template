@@ -16,14 +16,19 @@ related:
 ## Page shape
 
 Docs follow this shape where it fits, so readers (and agents) know where to stop.
-Front matter is required (`docspecsite check` enforces it); the rest is guidance:
+The front matter and the title are required, and `docspecsite check` enforces them; the rest is guidance:
 
 1. **Front matter** ([front-matter.md](front-matter.md)).
-2. `# Title` (no "Up" link: the parent is implied by the path and rendered as a breadcrumb).
+2. **Title**: the doc's first level-1 heading, right after the front matter; only blank lines may come between them.
+   Either Markdown style works (`# Import`, or a line underlined with `===`); none is enforced.
+   It is the doc's only level-1 heading; every other heading is level 2 or deeper.
+   The check reports text before the title, a doc without one, and a second level-1 heading.
+   No "Up" link: the parent is implied by the path and rendered as a breadcrumb.
 3. **Document brief** — the paragraph right after the title: the whole doc in 2–5 sentences.
    It is not the front-matter `summary`, which is one sentence for listings and indexes.
    Someone who reads only this should come away with a correct picture.
    Tables, lists and code read better in the body's sections than here: a rendered page may insert a generated contents list right after this paragraph, before the first section.
+   The title and the brief carry no [status note](lifecycle.md#status-notes): the doc's whole `status` describes them, so in a partly built doc the brief may mention built and unbuilt parts alike.
 4. **Body** — the details, in sections.
 5. **See also** — links across layers and to deeper docs, each with a few words on what the reader will find there.
 

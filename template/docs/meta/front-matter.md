@@ -36,7 +36,7 @@ code: [my_project.orders.checkout]
 
 | Field | Required | Meaning |
 | -- | -- | -- |
-| `title` | yes | Human title. Usually also the first `#` heading. |
+| `title` | yes | Human title. Usually also the text of the doc's title ([authoring.md](authoring.md#page-shape)). |
 | `summary` | yes | **One sentence.** Shown in indexes and listings; agents use it to decide whether to open the doc. Make it specific. |
 | `layer` | yes | `root`, `meta`, `behavior`, `scenarios`, `architecture`, `ui`, `guides`, `agents`, `reference`. Must match the directory. |
 | `status` | yes | Lifecycle state, see [lifecycle.md](lifecycle.md): one value, or, for a partly built doc, a list of distinct values from `implemented`, `specified` and `changed` (`[implemented, specified]`) whose first value covers the sections without a [status note](lifecycle.md#status-notes). |
