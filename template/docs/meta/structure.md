@@ -85,7 +85,7 @@ Step 3 follows from the no-delete/no-rename rule ([versioning.md](versioning.md#
 ## Naming
 
 - lowercase, words separated by `-`: `order-sync.md`;
-- no `#` or `%` in file or directory names: they have a meaning in URLs and break links to the rendered page;
+- no `#`, `%` or `?` in file or directory names: they have a meaning in URLs and break links to the rendered page;
 - name the *thing*, not an action: `checkout.md`, not `add-checkout.md`;
 - ADRs ([architecture decision records](glossary.md#adr)): `architecture/decisions/<PREFIX>-NNNN-<slug>.md`, see [ADR IDs](#adr-ids).
 
