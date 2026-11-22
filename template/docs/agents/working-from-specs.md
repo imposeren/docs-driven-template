@@ -65,6 +65,7 @@ Every design, in a design note or written straight into specs, questions each as
   If the seam is not worth building yet, the design must not block it, and a later-milestone doc proposes it.
 - **Personal preference.** A value that another reasonable project could choose differently (a directory name, a file name, a naming pattern, a limit, a default behavior) is a setting with a sensible default, not a constant.
   Leave a value fixed only when changing it would break the method or other projects; the doc says why.
+- **Names that leave room.** A generic word (backend, plugin, provider, handler, source) gets the domain it belongs to, in terms, headings, and settings or code names outside a namespace, whenever another thing of its kind is plausible.
 - Group settings by what they belong to: options of one part go in its own section (for example `[versioning.git]` for the git backend), and an option that only applies with another one goes under it.
 
 ## Writing a new doc
