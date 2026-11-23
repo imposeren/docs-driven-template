@@ -50,6 +50,10 @@ Files the project owns once it exists are never overwritten: its `CLAUDE.md`, `R
 They also never receive template changes: when an update adds a template doc, such as a new `BASE` ADR or the `PYRF-0001` of a newly chosen option, add its line to the index page yourself; `docspecsite check` names the missing entry.
 Other files, such as `.gitignore`, `docspecsite.toml` and `.claude/settings.json`, are merged, so the project's own changes stay.
 An ADR is never deleted: when the project drops an option, such as Pyrefly, supersede the option's ADR instead of letting the update remove it.
+Two changes need a manual fix after every update:
+
+- the template docs (`docs/meta/`, `docs/agents/`) arrive with the template's `status`, which follows what the pinned docspecsite release builds; where the project's own status differs (docspecsite itself builds ahead of its last release), set it back;
+- template files the project deleted, such as an unused `docs/reference/` section, come back; delete them again.
 Review the result and commit it like any change.
 
 ## Develop the template
@@ -62,6 +66,9 @@ scripts/check-sample-project.sh
 ```
 
 It needs uv, git and prek. `DOCSPECSITE_VERSION=<tag>` checks against another docspecsite release than the template's default.
+
+A template doc is `implemented` only when the default docspecsite release builds what it describes, so a spec that docspecsite has not released yet stays `specified` here.
+When you raise the default `docspecsite_version`, set every template doc that the new release builds to `implemented` in the same change.
 
 ## License
 
