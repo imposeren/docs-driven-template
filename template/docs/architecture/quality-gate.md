@@ -43,7 +43,7 @@ Hooks run on what a commit stages.
 ## Review (before commit)
 
 Every change is reviewed against the docs it implements before it is committed: does the code do what its `specified` docs say, are statuses honest (`specified` → `implemented`), and does nothing contradict an `implemented` doc ([agents/working-from-specs.md](../agents/working-from-specs.md)).
-Agent work gets an agent review in a fresh context (in Claude Code, `/code-review` or an equivalent review skill), then the maintainer's review; nothing is committed before both.
+Agent work gets two agent reviews, each in a fresh context: a spec review against the docs it implements, and a code review of the code itself (in Claude Code, `/code-review` or an equivalent review skill), as [step 6 of implementing a doc](../agents/working-from-specs.md#implementing-a-specified-doc) describes; then the maintainer's review. Nothing is committed before all of them.
 A change that alters behavior is also checked live — the changed command or endpoint is run and its output inspected — not only through its tests.
 
 Pushing goes straight to `origin`; there is no separate push gate.
